@@ -7,7 +7,6 @@ on:
     paths:
       - 'packages/container/**'
 
-
 defaults:
   run:
     working-directory: packages/container
@@ -18,11 +17,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - run: rm -rf node_modules
       - run: npm install
       - run: npm run build
 
-      - uses: Harish001/action-aws-cli@v1.1
+      - uses: chrislennon/action-aws-cli@v1.1
       - run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/container/latest
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

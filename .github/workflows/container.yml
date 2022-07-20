@@ -19,6 +19,8 @@ jobs:
       - run: rm -rf node_modules
       - run: npm install --legacy-peer-deps
       - run: npm run build
+        env:
+          PRODUCTION_DOMAIN: ${{ secrets.PRODUCTION_DOMAIN }}
 
       - uses: aws-actions/configure-aws-credentials@v1
         with:

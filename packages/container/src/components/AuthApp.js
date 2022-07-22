@@ -1,8 +1,9 @@
-import { mount } from 'marketing/MarketingApp';
-import React, {useRef, useEffect} from 'react';
-import {useHistory} from 'react-router-dom';
+import React, { useRef, useEffect } from "react"
+import {mount} from 'auth/AuthApp';
+import { useHistory } from "react-router-dom";
 
 export default () => {
+
     const ref = useRef(null);
     const history = useHistory();
 
@@ -11,7 +12,8 @@ export default () => {
             initialPath: history.location.pathname,
             onNavigate: (location) => {
                 const {pathname} = history.location;
-                if (location && pathname !== location.pathname) {
+                
+                if (location && location.pathname !== pathname) {
                     history.push(location.pathname);
                 }
             }
